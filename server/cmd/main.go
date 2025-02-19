@@ -34,5 +34,5 @@ func main() {
 	go hub.Run()
 
 	router.InitRouter(userHandler, wsHandler)
-	router.Start(":8080")
+	router.Start("0.0.0.0:8080") //允許所有來源訪問
 }

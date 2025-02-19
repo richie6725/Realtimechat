@@ -24,26 +24,23 @@ func NewRepository(db DBTX) Repository {
 
 // #POST3
 func (r *repository) CreateUser(ctx context.Context, user *User) (*User, error) {
-	var lastInsertID int
+	var lastInsertID int64
 
 	query := `
-        INSERT INTO users (username, password, email)
-        OUTPUT INSERTED.id
-        VALUES (@username, @password, @email)
-    `
-	// 使用命名參數傳遞值
-	err := r.db.QueryRowContext(
-		ctx,
-		query,
-		sql.Named("username", user.Username),
-		sql.Named("password", user.Password),
-		sql.Named("email", user.Email),
-	).Scan(&lastInsertID)
+    INSERT INTO users (username, password, email)
+    VALUES (?, ?, ?)`
 
+	result, err := r.db.ExecContext(ctx, query, user.Username, user.Password, user.Email)
 	if err != nil {
 		return &User{}, err
 	}
-	user.ID = int64(lastInsertID)
+
+	lastInsertID, err = result.LastInsertId()
+	if err != nil {
+		return &User{}, err
+	}
+
+	user.ID = lastInsertID
 
 	return user, nil
 }
@@ -52,9 +49,9 @@ func (r *repository) CreateUser(ctx context.Context, user *User) (*User, error) 
 func (r *repository) GetUserByEmail(ctx context.Context, email string) (*User, error) {
 
 	u := User{}
-	query := `SELECT id, email,username,password 
-			  FROM users WHERE email = @email`
-	err := r.db.QueryRowContext(ctx, query, sql.Named("email", email)).Scan(&u.ID, &u.Email, &u.Username, &u.Password)
+	query := `SELECT id, email, username, password 
+          FROM users WHERE email = ?`
+	err := r.db.QueryRowContext(ctx, query, email).Scan(&u.ID, &u.Email, &u.Username, &u.Password)
 
 	if err != nil {
 		return &User{}, err

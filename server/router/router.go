@@ -17,7 +17,7 @@ func InitRouter(userHandler *user.Handler, wsHandler *ws.Handler) {
 
 	// CORS 設定
 	corsHandler := handlers.CORS(
-		handlers.AllowedOrigins([]string{"http://localhost:3000"}),
+		handlers.AllowedOrigins([]string{"*"}), //或指定前端網址；若前端是 https://your-frontend.com，則填入該網址
 		handlers.AllowedMethods([]string{"GET", "POST"}),
 		handlers.AllowedHeaders([]string{"Content-Type"}),
 		handlers.ExposedHeaders([]string{"Content-Length"}),

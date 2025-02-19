@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/denisenkom/go-mssqldb"
+	_ "github.com/go-sql-driver/mysql"
 	"log"
 )
 
@@ -14,8 +15,8 @@ type Database struct {
 // 初始化#1
 func NewDatabase() (*Database, error) {
 
-	connString := "sqlserver://sa:67256725@127.0.0.1:1433?database=websocket"
-	db, err := sql.Open("sqlserver", connString)
+	connString := "admin:lo850608@tcp(gotestv1-db.cbo00ukyy2l8.ap-northeast-1.rds.amazonaws.com:3306)/websocket"
+	db, err := sql.Open("mysql", connString)
 	if err != nil {
 		return nil, err
 	}
