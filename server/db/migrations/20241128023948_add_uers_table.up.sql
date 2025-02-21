@@ -1,0 +1,6 @@
+CREATE TABLE users (
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    username NVARCHAR(MAX) NOT NULL,
+    email NVARCHAR(MAX) NOT NULL,
+    password NVARCHAR(MAX) NOT NULL
+);

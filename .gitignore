@@ -1,0 +1,6 @@
+.idea/
+node_modules/
+dist/
+.env
+Makefile
+project_structure.txt
