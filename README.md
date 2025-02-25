@@ -1,10 +1,8 @@
-# Golang Realtime Chat 後端 Server
+# Golang Realtime Chat
 
-Chat Application Backend
-這是一個使用 Golang 建置的即時聊天後端服務，提供使用者認證（註冊、登入、登出）以及利用 WebSocket 實現即時聊天室功能。
+使用 Golang 建置的即時聊天後端服務，提供使用者認證（註冊、登入、登出）以及利用 WebSocket 實現即時聊天室功能。
+前端是基於 React 與 Tailwind CSS 所打造的，透過與 Golang 後端進行連線，實現聊天室、使用者登入與房間管理等功能。
 
-Chat Application Frontend
-這個專案是基於 React 與 Tailwind CSS 所打造的即時聊天應用前端。前端透過 WebSocket 與 Golang 後端進行連線，實現聊天室、使用者登入與房間管理等功能。
 
 ## 特色
 - **即時聊天**：使用 WebSocket 進行聊天室的即時通訊，支援聊天室建立、加入及廣播訊息。
