@@ -10,10 +10,10 @@ Chat Application Frontend
 - **即時聊天**：使用 WebSocket 進行聊天室的即時通訊，支援聊天室建立、加入及廣播訊息。
 - **使用者管理**：支援使用者註冊、登入與登出。
 - **聊天室管理**：：支援創建房間、列出房間與加入聊天室。
-- 
+
+## 使用相關技術
 - **AWS雲端運算**：將前後端的Server建立在AWS EC2，連接RDS資料庫。
 - **Docker化**：將前後端Server透過Docker部屬於AWS EC2上。
-
 - **模組化架構**：內部分為 user、ws (WebSocket) 與 util 模組，架構清晰易於維護。
 - **認證機制**：利用 JWT 產生驗證 token，並以 Cookie 方式管理 Session。
 - **資料庫整合**：與 MySQL 資料庫連線，內建遷移腳本協助建立必要的資料表。
