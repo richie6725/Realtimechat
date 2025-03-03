@@ -20,4 +20,17 @@
 ## Youtube影片連結:
 https://youtu.be/ydCoqO49qCc
 
+## 安裝與使用說明
+- **設定資料庫**：
+- 1. 確認安裝並啟動MySQL資料庫。
+  2. 修改server/db/db.go 中的連線字串，依照您資料庫的參數（例如使用者、密碼、主機位址與資料庫名稱）。
+  3. 執行srver/db/migrations 中的 SQL 腳本，以建立必要的資料表。
+- **後端設定**：
+  1. 安裝依賴套件，執行go mod download。
+  2. CORS設定:在 server/router/router.go 中配置了 CORS，請新增自己的前端來源請求。
+  3. 啟動:執行server/cmd/main.go
+- **前端設定**：
+  1. 安裝依賴套件:npm install
+  2. 設定環境變數:請確認 constants 檔案中的URL根據後端位置調整對應URL。
+  3. 啟動:npm run dev
 
